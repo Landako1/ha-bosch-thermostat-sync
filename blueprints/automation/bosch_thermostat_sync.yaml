@@ -1,0 +1,46 @@
+blueprint:
+  name: Bosch Thermostat External Sensor Sync
+  description: >
+    Syncs an external temperature sensor with Bosch Radiator Thermostat II.
+    Updates every 5 minutes for stability and immediately on 0.1°C changes for precision.
+  domain: automation
+  input:
+    temp_sensor:
+      name: External Temperature Sensor
+      description: The sensor (e.g., Sonoff) used as the temperature reference.
+      selector:
+        entity:
+          domain: sensor
+          device_class: temperature
+    target_thermostat:
+      name: Bosch Thermostat(s)
+      description: The 'Remote Temperature' entity/entities of your Bosch thermostat(s).
+      selector:
+        entity:
+          domain: number
+          multiple: true
+
+trigger:
+  - platform: time_pattern
+    minutes: "/5"
+    id: "time_trigger"
+  - platform: state
+    entity_id: !input temp_sensor
+    id: "temp_trigger"
+
+condition:
+  - condition: template
+    value_template: >
+      {% set external_temp = states(temp_sensor) | float(0) %}
+      {% set target_list = (target_thermostat if target_thermostat is list else [target_thermostat]) %}
+      {% set current_remote_temp = states(target_list[0]) | float(0) %}
+      {{ trigger.id == 'time_trigger' or (external_temp - current_remote_temp) | abs >= 0.1 }}
+
+action:
+  - action: number.set_value
+    target:
+      entity_id: !input target_thermostat
+    data:
+      value: "{{ states(temp_sensor) | float }}"
+
+mode: restart
