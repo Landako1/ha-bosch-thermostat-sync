@@ -2,7 +2,7 @@
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/Landako1/ha-bosch-thermostat-sync/blob/main/blueprints/automation/bosch_thermostat_sync.yaml)
 
-A robust Home Assistant Blueprint to reliably sync external temperature sensors (e.g., Sonoff, Aqara) with **Bosch Radiator Thermostats II**. 
+A robust Home Assistant Blueprint to reliably sync external temperature sensors (e.g., Sonoff, Aqara) with **Bosch Radiator Thermostats II ([+M])**. 
 
 ## 🚀 The Problem
 Many users notice that Bosch thermostats "ignore" external temperature updates via Zigbee2MQTT or ZHA if the value stays stable for too long or if the update intervals are too wide. This leads to the thermostat falling back to its internal sensor, causing inaccurate heating.
