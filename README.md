@@ -25,3 +25,6 @@ The automation ensures a seamless update history. Even when the temperature is s
 
 1. Click the **"Import Blueprint"** button above or copy the URL of the `.yaml` file.
 2. In Home Assistant, go
+
+[google5e1b020b63d443ee.html](https://github.com/user-attachments/files/26066441/google5e1b020b63d443ee.html)
+google-site-verification: google5e1b020b63d443ee.html
