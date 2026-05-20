@@ -30,3 +30,5 @@ The automation ensures a seamless update history. Even when the temperature is s
 2. In Home Assistant, go to **Settings** -> **Automations** -> **Blueprints**.
 3. Click **Import Blueprint** and follow the instructions.
 4. Create a new automation, select your external sensor and your Bosch thermostat(s).
+## 📄 License
+This project is released under the **MIT License**.
